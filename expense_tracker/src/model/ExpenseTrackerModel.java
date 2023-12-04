@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Model class for data handling and logic implementation
+ */
 public class ExpenseTrackerModel {
 
   //encapsulation - data integrity
   private List<Transaction> transactions;
   private List<Integer> matchedFilterIndices;
+
+  private List<ExpenseTrackerModelListener> Observer_instance = new ArrayList<>();
 
   // This is applying the Observer design pattern.                          
   // Specifically, this is the Observable class. 
@@ -70,29 +75,27 @@ public class ExpenseTrackerModel {
    *         returns true. If not, returns false.
    */   
   public boolean register(ExpenseTrackerModelListener listener) {
-      // For the Observable class, this is one of the methods.
-      //
-      // TODO
-      return false;
+    if(listener != null){ //removing null objects
+        if(!Observer_instance.contains(listener)){ // checking for unique listeners
+          Observer_instance.add(listener);
+            return true; // listener added to observer_instances list
+        }
+    }
+    return false; //Not a valid or new listener
   }
 
   public int numberOfListeners() {
-      // For testing, this is one of the methods.
-      //
-      //TODO
-      return 0;
+    //int size = Observer_instances.size();
+    return Observer_instance.size();
   }
 
   public boolean containsListener(ExpenseTrackerModelListener listener) {
-      // For testing, this is one of the methods.
-      //
-      //TODO
-      return false;
+      return Observer_instance.contains(listener);
   }
 
   protected void stateChanged() {
-      // For the Observable class, this is one of the methods.
-      //
-      //TODO
+    for (ExpenseTrackerModelListener observer : Observer_instance) {
+      observer.update(this); //updating all the instances of a change
+    }
   }
 }
