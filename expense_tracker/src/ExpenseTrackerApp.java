@@ -5,6 +5,10 @@ import view.ExpenseTrackerView;
 import model.Filter.AmountFilter;
 import model.Filter.CategoryFilter;
 
+/** 
+ * Expense Tracker App -> Main Class
+*/
+
 public class ExpenseTrackerApp {
 
   /**
