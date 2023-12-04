@@ -93,7 +93,7 @@ public class ExpenseTrackerModel {
       return Observer_instance.contains(listener);
   }
 
-  protected void stateChanged() {
+  public void stateChanged() {
     for (ExpenseTrackerModelListener observer : Observer_instance) {
       observer.update(this); //updating all the instances of a change
     }
