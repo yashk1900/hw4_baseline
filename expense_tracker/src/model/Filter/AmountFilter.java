@@ -6,6 +6,10 @@ import java.util.List;
 import model.Transaction;
 import controller.InputValidation;
 
+/*
+ * Filter class based on amount
+ */
+
 public class AmountFilter implements TransactionFilter{
     private double amountFilter;
 

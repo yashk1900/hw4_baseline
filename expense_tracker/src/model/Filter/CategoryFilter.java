@@ -6,6 +6,9 @@ import java.util.List;
 import model.Transaction;
 import controller.InputValidation;
 
+/*
+ * Filter class based on Category
+ */
 public class CategoryFilter implements TransactionFilter {
     private String categoryFilter;
 
