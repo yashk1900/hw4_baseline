@@ -16,6 +16,9 @@ import model.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * View class used to render the UI
+ */
 public class ExpenseTrackerView extends JFrame implements ExpenseTrackerModelListener {
 
   private JTable transactionsTable;
