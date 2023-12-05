@@ -2,7 +2,7 @@ package controller;
 
 import java.util.Arrays;
 
-/*
+/**
  * Controller class for amount and category input validations
  */
 public class InputValidation {

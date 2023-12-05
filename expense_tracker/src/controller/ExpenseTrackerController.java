@@ -11,10 +11,9 @@ import model.ExpenseTrackerModel;
 import model.Transaction;
 import model.Filter.TransactionFilter;
 
-/*
+/**
  * Comtroller main class
  */
-
 public class ExpenseTrackerController {
   
   private ExpenseTrackerModel model;
