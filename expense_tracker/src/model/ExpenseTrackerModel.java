@@ -1,5 +1,4 @@
 package model;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +6,7 @@ import java.util.List;
 /**
  * Model class for data handling and logic implementation
  */
-public class ExpenseTrackerModel {
+public class ExpenseTrackerModel{
 
   //encapsulation - data integrity
   private List<Transaction> transactions;
@@ -31,12 +30,14 @@ public class ExpenseTrackerModel {
     transactions.add(t);
     // The previous filter is no longer valid.
     matchedFilterIndices.clear();
+    stateChanged();
   }
 
   public void removeTransaction(Transaction t) {
     transactions.remove(t);
     // The previous filter is no longer valid.
     matchedFilterIndices.clear();
+    stateChanged();
   }
 
   public List<Transaction> getTransactions() {
@@ -57,6 +58,7 @@ public class ExpenseTrackerModel {
       // For encapsulation, copy in the input list 
       this.matchedFilterIndices.clear();
       this.matchedFilterIndices.addAll(newMatchedFilterIndices);
+      stateChanged();
   }
 
   public List<Integer> getMatchedFilterIndices() {
@@ -74,7 +76,8 @@ public class ExpenseTrackerModel {
    * @return If the listener is non-null and not already registered,
    *         returns true. If not, returns false.
    */   
-  public boolean register(ExpenseTrackerModelListener listener) {
+
+   public boolean register(ExpenseTrackerModelListener listener) {
     if(listener != null){ //removing null objects
         if(!Observer_instance.contains(listener)){ // checking for unique listeners
           Observer_instance.add(listener);
@@ -82,6 +85,16 @@ public class ExpenseTrackerModel {
         }
     }
     return false; //Not a valid or new listener
+  }
+
+  public boolean unregister(ExpenseTrackerModelListener listener) {
+    if(listener != null){ //removing null objects
+        if(Observer_instance.contains(listener)){ // checking if it is an unique listeners
+          Observer_instance.remove(listener);
+            return true; // listener removed from observer_instances list
+        }
+    }
+    return false; //Invalid or a new listener
   }
 
   public int numberOfListeners() {

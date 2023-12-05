@@ -1,5 +1,4 @@
 package controller;
-
 import view.ExpenseTrackerView;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import model.Transaction;
 import model.Filter.TransactionFilter;
 
 /**
- * Comtroller main class
+ * Controller main class
  */
 public class ExpenseTrackerController {
   
@@ -48,7 +47,7 @@ public class ExpenseTrackerController {
     
     Transaction t = new Transaction(amount, category);
     model.addTransaction(t);
-    model.stateChanged(); //model updating view
+    //model.stateChanged(); //model updating view
     //view.update(model);
     return true;
   }
@@ -67,7 +66,7 @@ public class ExpenseTrackerController {
         }
       }
       model.setMatchedFilterIndices(rowIndexes);
-      model.stateChanged();
+      //model.stateChanged();
       //view.update(model);
     }
     else{
@@ -81,7 +80,7 @@ public class ExpenseTrackerController {
     if (rowIndex >= 0 && rowIndex < model.getTransactions().size()) {
       Transaction removedTransaction = model.getTransactions().get(rowIndex);
       model.removeTransaction(removedTransaction);
-      model.stateChanged();
+      //model.stateChanged();
       //view.update(model);
       // The undo was allowed.
       return true;
